@@ -81,7 +81,7 @@ void Application::ProcessKeyPressed(sf::Event a_event)
 	case sf::Keyboard::Space:
 		m_sound.play();
 		
-		m_pEntityMngr->ApplyForce(vector3(0.0f, 1.0f, 0.0f), "Steve");
+		//m_pEntityMngr->ApplyForce(vector3(0.0f, 1.0f, 0.0f), "Steve");
 		break;
 	case sf::Keyboard::LShift:
 	case sf::Keyboard::RShift:

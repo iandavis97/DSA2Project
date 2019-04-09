@@ -18,23 +18,58 @@ void Application::InitVariables(void)
 	vector3 v_ballPosition = m_pCameraMngr->GetPosition();
 	matrix4 m_ballPosition = glm::translate(v_ballPosition);
 	m_pEntityMngr->SetModelMatrix(m_ballPosition, "Ball");
-	//m_pCameraMngr.
-	//matrix4 m4Position = glm::translate(v3Position);
 
-	
-	/*for (int i = 0; i < 100; i++)
+	//Draw Cube Tower 
+///Need to Apply Physics Collisions between cubes and cubes and cannon ball
+	float angle = 0;
+	float steps = (2 * PI) / static_cast<float>(10);
+	std::vector<vector3> points;
+	float rad = 3;
+	float height = 0;
+
+	for (int i = 0; i < 50; i++)
 	{
+
 		//m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
-		vector3 v3Position = vector3(glm::sphericalRand(12.0f));
+		points.push_back(vector3(cos(angle)*rad, 0, sin(angle)*rad));
+		angle += steps;
+		vector3 v3Position = vector3(points[i]);
 		v3Position.y = 0.0f;
+		if (i <= 0 && i < 10)
+		{
+			v3Position.y = 0.0f;
+		}
+		if (i >= 10 && i < 20)
+		{
+			v3Position.y = 2;
+		}
+		if (i >= 20 && i < 30)
+		{
+			v3Position.y = 4;
+		}
+		if (i >= 30 && i < 40)
+		{
+			v3Position.y = 6;
+		}
+		if (i >= 40 && i < 50)
+		{
+			v3Position.y = 8;
+		}
+		if (i >= 50 && i < 60)
+		{
+			v3Position.y = 8;
+		}
+		if (i >= 60 && i < 70)
+		{
+			v3Position.y = 8;
+		}
 		matrix4 m4Position = glm::translate(v3Position);
 		m_pEntityMngr->SetModelMatrix(m4Position * glm::scale(vector3(2.0f)));
-		m_pEntityMngr->UsePhysicsSolver();
+		//m_pEntityMngr->UsePhysicsSolver();
 		//m_pEntityMngr->SetMass(2);
-
 		//m_pEntityMngr->SetMass(i+1);
 	}
-	*/
+	
 }
 void Application::Update(void)
 {
