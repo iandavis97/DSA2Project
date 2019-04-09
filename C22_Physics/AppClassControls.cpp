@@ -18,6 +18,8 @@ void Application::ProcessMousePressed(sf::Event a_event)
 	{
 	default: break;
 	case sf::Mouse::Button::Left:
+		m_pEntityMngr->UsePhysicsSolver(true);
+		m_pEntityMngr->ApplyForce(m_pCameraMngr->GetForward()*10, "Ball");
 		gui.m_bMousePressed[0] = true;
 		break;
 	case sf::Mouse::Button::Middle:
@@ -33,6 +35,7 @@ void Application::ProcessMousePressed(sf::Event a_event)
 	for (int i = 0; i < 3; i++)
 		gui.io.MouseDown[i] = gui.m_bMousePressed[i];
 }
+
 void Application::ProcessMouseReleased(sf::Event a_event)
 {
 	switch (a_event.mouseButton.button)
@@ -73,6 +76,7 @@ void Application::ProcessKeyPressed(sf::Event a_event)
 	default: break;
 	case sf::Keyboard::Space:
 		m_sound.play();
+		
 		m_pEntityMngr->ApplyForce(vector3(0.0f, 1.0f, 0.0f), "Steve");
 		break;
 	case sf::Keyboard::LShift:
@@ -393,6 +397,7 @@ void Application::ProcessKeyboard(void)
 		fMultiplier = 5.0f;
 
 #pragma region Camera Position
+	/*
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		m_pCameraMngr->MoveForward(m_fMovementSpeed * fMultiplier);
 
@@ -410,6 +415,7 @@ void Application::ProcessKeyboard(void)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
 		m_pCameraMngr->MoveVertical(m_fMovementSpeed * fMultiplier);
+		*/
 #pragma endregion
 
 #pragma region Character Position

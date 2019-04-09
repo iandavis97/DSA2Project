@@ -9,13 +9,22 @@ void Application::InitVariables(void)
 		AXIS_Y);					//Up
 
 	m_pLightMngr->SetPosition(vector3(0.0f, 3.0f, 13.0f), 1); //set the position of first light (0 is reserved for ambient light)
+	m_pMeshMngr->GetInstance();
+	//m_pMeshMngr->GenerateIcoSphere(1.0f, 12.0f, C_RED);
+	//m_pMeshMngr->AddIcoSphereToRenderList(IDENTITY_M4, C_BLUE, RENDER_SOLID);
 
-	m_pEntityMngr->AddEntity("Minecraft\\Steve.obj", "Steve");
-	m_pEntityMngr->UsePhysicsSolver();
+	m_pEntityMngr->AddEntity("Cannon\\ball.obj", "Ball");
+	m_pEntityMngr->UsePhysicsSolver(false);
+	vector3 v_ballPosition = m_pCameraMngr->GetPosition();
+	matrix4 m_ballPosition = glm::translate(v_ballPosition);
+	m_pEntityMngr->SetModelMatrix(m_ballPosition, "Ball");
+	//m_pCameraMngr.
+	//matrix4 m4Position = glm::translate(v3Position);
+
 	
-	for (int i = 0; i < 100; i++)
+	/*for (int i = 0; i < 100; i++)
 	{
-		m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
+		//m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
 		vector3 v3Position = vector3(glm::sphericalRand(12.0f));
 		v3Position.y = 0.0f;
 		matrix4 m4Position = glm::translate(v3Position);
@@ -25,6 +34,7 @@ void Application::InitVariables(void)
 
 		//m_pEntityMngr->SetMass(i+1);
 	}
+	*/
 }
 void Application::Update(void)
 {
@@ -44,6 +54,8 @@ void Application::Update(void)
 	//m_pEntityMngr->SetModelMatrix(m_m4Steve, "Steve");
 
 	//Add objects to render list
+	//m_pMeshMngr->AddIcoSphereToRenderList(IDENTITY_M4, C_BLUE, RENDER_SOLID);
+
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
 	//m_pEntityMngr->AddEntityToRenderList(-1, true);
 }
