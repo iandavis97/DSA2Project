@@ -14,12 +14,16 @@ void Application::ProcessMouseMovement(sf::Event a_event)
 }
 void Application::ProcessMousePressed(sf::Event a_event)
 {
+	vector3 v_ballPosition = m_pCameraMngr->GetPosition();
+	matrix4 m_ballPosition = glm::translate(v_ballPosition);
 	switch (a_event.mouseButton.button)
 	{
 	default: break;
 	case sf::Mouse::Button::Left:
+		
+		m_pEntityMngr->SetModelMatrix(m_ballPosition, "Ball");
 		m_pEntityMngr->UsePhysicsSolver(true);
-		m_pEntityMngr->ApplyForce(m_pCameraMngr->GetForward()*10, "Ball");
+		m_pEntityMngr->ApplyForce(m_pCameraMngr->GetForward()*15, "Ball");
 		gui.m_bMousePressed[0] = true;
 		break;
 	case sf::Mouse::Button::Middle:
