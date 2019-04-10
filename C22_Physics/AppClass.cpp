@@ -30,7 +30,7 @@ void Application::InitVariables(void)
 	for (int i = 0; i < 50; i++)
 	{
 
-		//m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
+		m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
 		points.push_back(vector3(cos(angle)*rad, 0, sin(angle)*rad));
 		angle += steps;
 		vector3 v3Position = vector3(points[i]);

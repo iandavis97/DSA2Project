@@ -22,7 +22,7 @@ void Application::ProcessMousePressed(sf::Event a_event)
 	case sf::Mouse::Button::Left:
 		
 		m_pEntityMngr->SetModelMatrix(m_ballPosition, "Ball");
-		m_pEntityMngr->UsePhysicsSolver(true);
+		m_pEntityMngr->UsePhysicsSolver(true,0);
 		m_pEntityMngr->ApplyForce(m_pCameraMngr->GetForward()*15, "Ball");
 		gui.m_bMousePressed[0] = true;
 		break;
