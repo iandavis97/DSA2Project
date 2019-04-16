@@ -314,10 +314,21 @@ void Simplex::MyEntity::Update(void)
 }
 void Simplex::MyEntity::ResolveCollision(MyEntity* a_pOther)
 {
-	if (m_bUsePhysicsSolver)
+	//String tempString = (String)a_pOther;
+	//String cubeName = "Cube";
+	m_pSolver->ResolveCollision(a_pOther->GetSolver());
+	UsePhysicsSolver(true);
+	/*
+	if (a_pOther->GetUniqueID().find(cubeName))
 	{
 		m_pSolver->ResolveCollision(a_pOther->GetSolver());
+		a_pOther->UsePhysicsSolver(true);
 	}
+	if (a_pOther->GetUniqueID().find("Ball"))
+	{
+		
+	}
+	*/
 }
 void Simplex::MyEntity::UsePhysicsSolver(bool a_bUse)
 {

@@ -90,8 +90,7 @@ vector3 RoundSmallVelocity(vector3 a_v3Velocity, float minVelocity = 0.01f)
 }
 void MySolver::Update(void)
 {
-	ApplyForce(vector3(0.0f, -0.035f, 0.0f));
-
+	ApplyForce(vector3(0.0f, -0.3f, 0.0f));
 	m_v3Velocity += m_v3Acceleration;
 	
 	float fMaxVelocity = 5.0f;
@@ -114,12 +113,12 @@ void MySolver::ResolveCollision(MySolver* a_pOther)
 {
 	float fMagThis = glm::length(m_v3Velocity);
 	float fMagOther = glm::length(m_v3Velocity);
-
+	//m_v3Velocity += vector3(.0f, .01f, .0f);
 	if (fMagThis > 0.015f || fMagOther > 0.015f)
 	{
 		//a_pOther->ApplyForce(GetVelocity());
-		ApplyForce(-m_v3Velocity);
-		a_pOther->ApplyForce(m_v3Velocity);
+		ApplyForce(-m_v3Velocity*3);
+		a_pOther->ApplyForce(m_v3Velocity*3);
 	}
 	else
 	{
@@ -128,6 +127,6 @@ void MySolver::ResolveCollision(MySolver* a_pOther)
 			v3Direction = glm::normalize(v3Direction);
 		v3Direction *= 0.04f;
 		ApplyForce(v3Direction);
-		a_pOther->ApplyForce(-v3Direction);
+		a_pOther->ApplyForce(-v3Direction*2);
 	}
 }

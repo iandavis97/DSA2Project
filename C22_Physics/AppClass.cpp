@@ -14,7 +14,7 @@ void Application::InitVariables(void)
 	//m_pMeshMngr->AddIcoSphereToRenderList(IDENTITY_M4, C_BLUE, RENDER_SOLID);
 
 	m_pEntityMngr->AddEntity("Cannon\\ball.obj", "Ball");
-	m_pEntityMngr->UsePhysicsSolver(false);
+	m_pEntityMngr->UsePhysicsSolver(true);
 	vector3 v_ballPosition = m_pCameraMngr->GetPosition();
 	matrix4 m_ballPosition = glm::translate(v_ballPosition);
 	m_pEntityMngr->SetModelMatrix(m_ballPosition, "Ball");
@@ -27,7 +27,7 @@ void Application::InitVariables(void)
 	float rad = 3;
 	float height = 0;
 
-	for (int i = 0; i < 50; i++)
+	for (int i = 0; i < 500; i++)
 	{
 
 		m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
@@ -41,33 +41,43 @@ void Application::InitVariables(void)
 		}
 		if (i >= 10 && i < 20)
 		{
-			v3Position.y = 2;
+			v3Position.y = 2.2;
 		}
 		if (i >= 20 && i < 30)
 		{
-			v3Position.y = 4;
+			v3Position.y = 4.4;
 		}
 		if (i >= 30 && i < 40)
 		{
-			v3Position.y = 6;
+			v3Position.y = 6.6;
 		}
 		if (i >= 40 && i < 50)
 		{
-			v3Position.y = 8;
+			v3Position.y = 8.8;
 		}
 		if (i >= 50 && i < 60)
 		{
-			v3Position.y = 8;
+			v3Position.y = 11;
 		}
 		if (i >= 60 && i < 70)
 		{
-			v3Position.y = 8;
+			v3Position.y = 13.2;
+		}
+		if (i >= 70 && i < 80)
+		{
+			v3Position.y = 15.4;
+		}
+		if (i >= 80 && i < 90)
+		{
+			v3Position.y = 17.6;
+		}
+		if (i >= 90 && i < 500)
+		{
+			v3Position.y = 19.8;
 		}
 		matrix4 m4Position = glm::translate(v3Position);
 		m_pEntityMngr->SetModelMatrix(m4Position * glm::scale(vector3(2.0f)));
-		//m_pEntityMngr->UsePhysicsSolver();
-		//m_pEntityMngr->SetMass(2);
-		//m_pEntityMngr->SetMass(i+1);
+		m_pEntityMngr->SetMass(10);
 	}
 	
 }
