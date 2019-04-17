@@ -226,6 +226,7 @@ void MyRigidBody::AddCollisionWith(MyRigidBody* other)
 		the object is already there return with no changes
 	*/
 
+
 	//insert the entry
 	PRigidBody* pTemp;
 	pTemp = new PRigidBody[m_uCollidingCount + 1];
@@ -294,24 +295,59 @@ bool MyRigidBody::IsColliding(MyRigidBody* const other)
 	if (bColliding) //they are colliding with bounding sphere
 	{
 		if (this->m_v3MaxG.x < other->m_v3MinG.x) //this to the right of other
+		{
 			bColliding = false;
+
+		}
+
 		if (this->m_v3MinG.x > other->m_v3MaxG.x) //this to the left of other
+		{
 			bColliding = false;
+
+		}
 
 		if (this->m_v3MaxG.y < other->m_v3MinG.y) //this below of other
-			bColliding = false;
-		if (this->m_v3MinG.y > other->m_v3MaxG.y) //this above of other
+		{
 			bColliding = false;
 
+		}
+		if (this->m_v3MinG.y > other->m_v3MaxG.y) //this above of other
+		{
+			bColliding = false;
+
+		}
+
 		if (this->m_v3MaxG.z < other->m_v3MinG.z) //this behind of other
+		{
 			bColliding = false;
+
+		}
 		if (this->m_v3MinG.z > other->m_v3MaxG.z) //this in front of other
+		{
 			bColliding = false;
+
+		}
 
 		if (bColliding) //they are colliding with bounding box also
 		{
+			/*
+			this->m_v3MaxG.x > other->m_v3MinG.x &&
+				this->m_v3MinG.x < other->m_v3MaxG.x &&
+				this->m_v3MaxG.y > other->m_v3MinG.y &&
+				this->m_v3MinG.y < other->m_v3MaxG.y &&
+				this->m_v3MaxG.z > other->m_v3MinG.z &&
+				this->m_v3MinG.z < other->m_v3MaxG.z);
+				*/
+
+
 			this->AddCollisionWith(other);
 			other->AddCollisionWith(this);
+			if (bColliding)
+			{
+				this->AddCollisionWith(other);
+				other->AddCollisionWith(this);
+			}
+
 		}
 		else //they are not colliding with bounding box
 		{

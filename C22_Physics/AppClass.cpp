@@ -27,7 +27,7 @@ void Application::InitVariables(void)
 	float rad = 3;
 	float height = 0;
 
-	for (int i = 0; i < 500; i++)
+	for (int i = 0; i < 50; i++)
 	{
 
 		m_pEntityMngr->AddEntity("Minecraft\\Cube.obj", "Cube_" + std::to_string(i));
@@ -71,7 +71,7 @@ void Application::InitVariables(void)
 		{
 			v3Position.y = 17.6;
 		}
-		if (i >= 90 && i < 500)
+		if (i >= 90 && i < 100)
 		{
 			v3Position.y = 19.8;
 		}

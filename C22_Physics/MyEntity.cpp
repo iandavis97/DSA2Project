@@ -316,6 +316,7 @@ void Simplex::MyEntity::ResolveCollision(MyEntity* a_pOther)
 {
 	//String tempString = (String)a_pOther;
 	//String cubeName = "Cube";
+
 	m_pSolver->ResolveCollision(a_pOther->GetSolver());
 	UsePhysicsSolver(true);
 	/*
