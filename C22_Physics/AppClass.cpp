@@ -79,7 +79,8 @@ void Application::InitVariables(void)
 		m_pEntityMngr->SetModelMatrix(m4Position * glm::scale(vector3(2.0f)));
 		m_pEntityMngr->SetMass(10);
 	}
-	
+	m_uOctantLevels = 1;
+	m_pRoot = new MyOctant(m_uOctantLevels, 5);
 }
 void Application::Update(void)
 {
@@ -108,6 +109,12 @@ void Application::Display(void)
 {
 	// Clear the screen
 	ClearScreen();
+
+	//display octree
+	if (m_uOctantID == -1)
+		m_pRoot->Display();
+	else
+		m_pRoot->Display(m_uOctantID);
 
 	// draw a skybox
 	m_pMeshMngr->AddSkyboxToRenderList();

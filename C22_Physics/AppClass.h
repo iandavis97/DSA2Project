@@ -1,5 +1,5 @@
 /*----------------------------------------------
-Programmer: Alberto Bobadilla (labigm@gmail.com)
+Programmer: Czarpushka
 Date: 2017/06
 ----------------------------------------------*/
 #ifndef __APPLICATIONCLASS_H_
@@ -11,13 +11,17 @@ Date: 2017/06
 #include "imgui\ImGuiObject.h"
 
 #include "MyEntityManager.h"
-
+#include "MyOctant.h"
 namespace Simplex
 {
 //Adding Application to the Simplex namespace
 class Application
 {
 	MyEntityManager* m_pEntityMngr = nullptr; //Entity Manager
+	uint m_uOctantID = -1; //Index of Octant to display
+	uint m_uObjects = 0; //Number of objects in the scene
+	uint m_uOctantLevels = 0; //Number of levels in the octree
+	MyOctant* m_pRoot = nullptr;
 private:
 	String m_sProgrammer = "Czarpushka"; //programmer
 
