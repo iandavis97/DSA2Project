@@ -103,7 +103,6 @@ void Application::Update(void)
 	//m_pMeshMngr->AddIcoSphereToRenderList(IDENTITY_M4, C_BLUE, RENDER_SOLID);
 
 	m_pEntityMngr->AddEntityToRenderList(-1, true);
-	//m_pEntityMngr->AddEntityToRenderList(-1, true);
 }
 void Application::Display(void)
 {
