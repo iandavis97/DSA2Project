@@ -27,7 +27,7 @@ void Application::InitVariables(void)
 	float rad = 3;
 	float height = 0;
 	float stepHeight= 2.2f;
-	int numBlocks = 500;
+	int numBlocks = 2500;
 
 	float angle = 0;
 	float steps = (2 * PI) / static_cast<float>(10);
