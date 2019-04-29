@@ -429,7 +429,7 @@ void Application::ProcessKeyboard(void)
 		fMultiplier = 5.0f;
 
 #pragma region Camera Position
-	/*
+	
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 		m_pCameraMngr->MoveForward(m_fMovementSpeed * fMultiplier);
 
@@ -447,7 +447,7 @@ void Application::ProcessKeyboard(void)
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::E))
 		m_pCameraMngr->MoveVertical(m_fMovementSpeed * fMultiplier);
-		*/
+		
 #pragma endregion
 
 #pragma region Character Position
