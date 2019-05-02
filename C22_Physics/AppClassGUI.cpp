@@ -48,6 +48,8 @@ void Application::DrawGUI(void)
 			ImGui::Separator();
 			ImGui::Text("Left Click: Shoot Ball\n");
 			ImGui::Text("Right Click: Move Camera\n");
+			ImGui::Text("Add: Increase octree subdivisons\n");
+			ImGui::Text("Subtract: Decrease octree subdivisions\n");
 		}
 		ImGui::End();
 	}
